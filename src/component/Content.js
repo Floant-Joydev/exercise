@@ -11,9 +11,17 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 
 export default function Content() {
+
+  const [tougle, setTougle] = useState({
+    password: true,
+    ban: false,
+    location: true,
+    profile: false
+  });
+
   return (
     <div className="mt-4">
       <div className="text-[40px] font-bold">Settings</div>
@@ -40,8 +48,9 @@ export default function Content() {
             <div>
               {" "}
               <FontAwesomeIcon
-                icon={faToggleOn}
-                className="text-[35px] text-green-600 "
+                icon={(tougle.password) ? faToggleOn: faToggleOff}
+                className= {`text-[35px] ${(tougle.password) ? "text-green-600" : "text-gray-500"} duration-300`}
+                onClick={() => setTougle({...tougle, password: !tougle.password})}
               ></FontAwesomeIcon>
             </div>
           </div>
@@ -59,8 +68,9 @@ export default function Content() {
             <div>
               {" "}
               <FontAwesomeIcon
-                icon={faToggleOff}
-                className="text-[35px] text-gray-500"
+                icon={(tougle.ban) ? faToggleOn: faToggleOff}
+                className= {`text-[35px] ${(tougle.ban) ? "text-green-600" : "text-gray-500"} duration-300`}
+                onClick={() => setTougle({...tougle, ban: !tougle.ban})}
               ></FontAwesomeIcon>
             </div>
           </div>
@@ -78,8 +88,9 @@ export default function Content() {
             <div>
               {" "}
               <FontAwesomeIcon
-                icon={faToggleOn}
-                className="text-[35px] text-green-600"
+                icon={(tougle.location) ? faToggleOn: faToggleOff}
+                className= {`text-[35px] ${(tougle.location) ? "text-green-600" : "text-gray-500"} duration-300`}
+                onClick={() => setTougle({...tougle, location: !tougle.location})}
               ></FontAwesomeIcon>
             </div>
           </div>
@@ -97,8 +108,9 @@ export default function Content() {
             <div>
               {" "}
               <FontAwesomeIcon
-                icon={faToggleOff}
-                className="text-[35px] text-gray-500"
+                icon={(tougle.profile) ? faToggleOn: faToggleOff}
+                className= {`text-[35px] ${(tougle.profile) ? "text-green-600" : "text-gray-500"} duration-300`}
+                onClick={() => setTougle({...tougle, profile: !tougle.profile})}
               ></FontAwesomeIcon>
             </div>
           </div>
